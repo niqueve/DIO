@@ -10,6 +10,14 @@ class Caixa_eletronico:
     
     def __str__(self):
         return f"Saldo em conta {self.saldo} \n Limite de saque {self.LIMITE_SAQUE} \n valor máximo por saque {self.MAX_SAQUE}"
+    #------------------------------menu
+    def menu (self):
+        resposta = int(input("Digite o número da operação desejada: \n" \
+        "1 - Saque \n" \
+        "2 - Depósito \n" \
+        "3 - Extrato \n" \
+        "4 - Sair \n"))
+        return resposta
 
     def saque (self):
         valor_saque = float(input("Digite o valor para saque: "))
@@ -44,4 +52,26 @@ class Caixa_eletronico:
         for operacao in self.movimentacoes:
             print(operacao)
         print(f"\n Saldo atual da conta: {self.saldo} \n")
-        
+
+
+#-----------------------------------------desafio 2      
+
+class Usuario:
+    def __init__(self, nome, data_nasc, cpf, endereco):
+        self.nome = nome
+        self.data_nasc = data_nasc
+        self.cpf = cpf
+        self.endereco = endereco
+
+class Conta:
+    def __init__(self, usuario):
+        self.agencia = "0001"
+        self.num_conta = 1
+        self.usuario = usuario # numero do cpf
+        self.saldo = 0
+
+class Conta_corrente(Conta):
+    def __init__(self, num_conta, usuario):
+        super().__init__(usuario)
+        self.operacao = "01"
+        self.cheque_especial = 2500

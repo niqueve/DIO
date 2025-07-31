@@ -1,29 +1,22 @@
 from Banco import Caixa_eletronico
-
-#------------------------------menu
-def menu ():
-    resposta = int(input("Digite o número da operação desejada: \n" \
-    "1 - Saque \n" \
-    "2 - Depósito \n" \
-    "3 - Extrato \n" \
-    "4 - Sair \n"))
-    return resposta
+from Sistema import Sistema
 
 #-------------------------------------função principal
+sistema = Sistema()
 banco = Caixa_eletronico(1500)
 
 def main ():
     while True:
-        opcao = menu()
+        opcao = sistema.menu()
         match opcao:
             case 1:
-                operacao = banco.saque()
+                operacao = sistema.cadastrar_usuario()
                 print(operacao)
             case 2:
-                operacao = banco.deposito()
+                operacao = sistema.cadastrar_conta()
                 print(operacao)
             case 3:
-                banco.extrato()
+                sistema.caixa_eletronico()
 
             case 4:
                 print("Encerrando..")
